@@ -1,81 +1,52 @@
-Step 1: Install the nlohmann/json Library
-Option 1: Directly Download the Header File
+# Shamir's Secret Sharing Algorithm - C++ Implementation
 
-Go to the nlohmann/json GitHub repository.
-Download the json.hpp file from the repository. You can usually find it under the "single include file" section.
-Option 2: Use a Package Manager
+This repository contains a C++ implementation of a simplified version of Shamir's Secret Sharing algorithm. The program reads polynomial data from a JSON file, decodes it, performs Lagrange interpolation, and computes the constant term \( c \) of the polynomial.
 
-vcpkg:
+## Prerequisites
 
-Install vcpkg following the instructions here.
-Run vcpkg install nlohmann-json to install the library.
-Conan:
+1. **C++ Compiler**: Ensure you have a C++ compiler installed (e.g., `g++` for GCC).
 
-Install Conan following the instructions here.
-Create a conanfile.txt with the following content:
-csharp
-Copy code
-[requires]
-nlohmann_json/3.11.2
+2. **nlohmann/json Library**: This code uses the `nlohmann/json` library for JSON parsing. You can either download the header file or use a package manager to install it.
 
-[generators]
-cmake
-Run conan install . to install the library.
-Step 2: Save the C++ Code
-Open a text editor and paste the provided C++ code.
-Save the file with a .cpp extension, e.g., shamir.cpp.
-Step 3: Create the JSON Input File
-Open a text editor and paste your JSON input.
-Save the file as input.json in the same directory where your shamir.cpp file is located.
-Step 4: Compile the C++ Code
-Using g++ (GNU Compiler Collection):
+## Installation
 
-Open a terminal (or Command Prompt on Windows).
+### Option 1: Direct Download of nlohmann/json
 
-Navigate to the directory where you saved shamir.cpp and input.json.
+1. Download the `json.hpp` file from the [nlohmann/json GitHub repository](https://github.com/nlohmann/json).
+2. Place the `json.hpp` file in the same directory as your C++ code.
 
-If you downloaded json.hpp directly, compile the code using:
+### Option 2: Using a Package Manager
 
-sh
-Copy code
-g++ -o shamir shamir.cpp
-If you used a package manager (vcpkg or Conan), you might need to include the library path. For example, with vcpkg, it would be:
+- **vcpkg**:
+  1. Install vcpkg following the instructions [here](https://github.com/microsoft/vcpkg).
+  2. Run `vcpkg install nlohmann-json` to install the library.
 
-sh
-Copy code
-g++ -o shamir shamir.cpp -I/path/to/vcpkg/installed/x64-windows/include
-For Conan:
+- **Conan**:
+  1. Install Conan following the instructions [here](https://conan.io/downloads.html).
+  2. Create a `conanfile.txt` with the following content:
+     ```
+     [requires]
+     nlohmann_json/3.11.2
+     
+     [generators]
+     cmake
+     ```
+  3. Run `conan install .` to install the library.
 
-sh
-Copy code
-g++ -o shamir shamir.cpp -I/path/to/conan/include
-Step 5: Run the Compiled Program
-In the terminal, execute the compiled program:
-sh
-Copy code
-./shamir
-On Windows, you might need to use:
-sh
-Copy code
-shamir.exe
-Summary of Commands
-Download the JSON library (if not using a package manager).
-Save the C++ code as shamir.cpp.
-Create the JSON input file named input.json.
-Compile the code:
-sh
-Copy code
-g++ -o shamir shamir.cpp -I/path/to/json/include
-Run the program:
-sh
-Copy code
-./shamir
-This will read the JSON file, perform the necessary computations, and print the constant term 
-𝑐
-c. If you encounter any issues, make sure the paths to the JSON library are correctly specified and the files are in the right directory.
+## Files
 
+- `shamir.cpp`: C++ source code for reading JSON, decoding values, and computing the polynomial constant term.
+- `input.json`: Example JSON file containing polynomial data (you should create this file based on your test case).
 
+## Usage
 
+1. **Save the C++ code**:
+   - Save the provided C++ code into a file named `shamir.cpp`.
 
+2. **Create the JSON Input File**:
+   - Create a file named `input.json` with your polynomial data in JSON format. Ensure it is in the same directory as `shamir.cpp`.
 
+3. **Compile the Code**:
 
+   ```sh
+   g++ -o shamir shamir.cpp -I/path/to/json/include
